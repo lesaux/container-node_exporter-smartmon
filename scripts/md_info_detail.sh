@@ -6,7 +6,7 @@
 
 set -eu
 
-for MD_DEVICE in /dev/md/*; do
+for MD_DEVICE in $(ls /dev/md*); do
   # Subshell to avoid eval'd variables from leaking between iterations
   (
     # Resolve symlink to discover device, e.g. /dev/md127
