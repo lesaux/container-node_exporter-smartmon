@@ -24,6 +24,11 @@ RUN apt-get -q update && \
         /scripts && \
     chmod 755 /scripts/*
 
+RUN apt-get -q update && \
+    apt-get install -y --no-install-recommends mdadm && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 COPY entrypoint.sh /entrypoint.sh
 
 RUN chmod 755 /entrypoint.sh
